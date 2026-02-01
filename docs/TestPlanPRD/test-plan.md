@@ -6,6 +6,7 @@
 For detailed implementation details, including automation, load testing, CI/CD, and infrastructure, refer to the supporting documents below.
 
 - [Automation Strategy](../automation-strategy.md)
+- [API Testing Guide](../README-API-TESTING.md)
 - [Functional Tests](../../HandsOnExerciseABC/functional-tests.test.js)
 - [Load Tests](../../HandsOnExerciseABC/load-test.js)
 - [Load Test Report](../LOAD-TEST-REPORT.md)
