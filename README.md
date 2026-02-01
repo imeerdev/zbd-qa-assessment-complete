@@ -1,5 +1,7 @@
 # Supporting Documentation
 
+> **Note:** The Terraform infrastructure (Option C) is provided as an example configuration and is not deployed, as it incurs AWS costs (~$40/month). The CI/CD pipeline and tests run for free on GitHub Actions.
+
 ## Part 1: Test Plan from PRD
 
 **PRD:** Rewards SDK – Achievement-Based Bitcoin Payouts

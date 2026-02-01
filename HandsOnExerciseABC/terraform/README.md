@@ -1,5 +1,7 @@
 # Infrastructure as Code (Terraform)
 
+> **Note:** This Terraform configuration is provided as an example and is not deployed, as it incurs AWS costs (~$40/month).
+
 ## Overview
 
 Terraform configuration that deploys the **Payment API** to AWS with:
