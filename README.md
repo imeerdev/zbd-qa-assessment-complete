@@ -35,9 +35,10 @@ This section contains a **complete solution** combining API testing, CI/CD pipel
 - **AWS Infrastructure** (`terraform/`) - EC2, RDS, VPC, S3
 - **Automated Deployment** - Deploys this exact API to AWS
 - **Smoke Tests** - Validates deployment works correctly
-- **Multi-environment Support** - Test, staging, production configs
+- **Cost**: ~$40/month for test environment
 
-**Full documentation**: [HandsOnExerciseABC/terraform/README.md](./HandsOnExerciseABC/terraform/README.md)
+**Quick start**: [terraform/README.md](./HandsOnExerciseABC/terraform/README.md)
+**Deep dive**: [terraform/DOCUMENTATION.md](./HandsOnExerciseABC/terraform/DOCUMENTATION.md) (multi-env, secrets, security)
 
 ---
 
@@ -114,7 +115,7 @@ terraform init && terraform apply
 
 ```
 zbd-qa-assessment-complete/
-├── MainReadMe.md                          # This file
+├── README.md                              # This file
 │
 ├── docs/
 │   ├── TestPlanPRD/
@@ -219,4 +220,4 @@ All three options use the **same API**. Combining them:
 
 **See [README-API-TESTING.md](./docs/README-API-TESTING.md) for API testing details**
 **See [README-CICD-PIPELINE.md](./docs/README-CICD-PIPELINE.md) for CI/CD pipeline details**
-**See [terraform/README.md](./HandsOnExerciseABC/terraform/README.md) for infrastructure details**
+**See [terraform/README.md](./HandsOnExerciseABC/terraform/README.md) for infrastructure quick start**
