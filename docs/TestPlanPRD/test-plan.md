@@ -8,6 +8,7 @@ For detailed implementation details, including automation, load testing, CI/CD, 
 - [Automation Strategy](../automation-strategy.md)
 - [Functional Tests](../../HandsOnExerciseABC/functional-tests.test.js)
 - [Load Tests](../../HandsOnExerciseABC/load-test.js)
+- [Load Test Report](../LOAD-TEST-REPORT.md)
 - [CI/CD Pipeline](../../.github/workflows/ci-cd.yml)
 - [Infrastructure (Terraform)](../../HandsOnExerciseABC/terraform/)
 
