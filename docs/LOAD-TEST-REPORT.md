@@ -326,47 +326,46 @@ Breaking down the "errors":
 
 ## Recommendations (Prioritized)
 
-### P0 - Critical (Fix Before Production)
+> **Priority Definitions** (per [test-plan.md](./TestPlanPRD/test-plan.md)):
+> - **P1**: Critical - Financial loss, security breach, or feature failure. Blocks release.
+> - **P2**: High - Major impact, must fix before release.
+> - **P3**: Medium - Minor impact, can ship with documented workaround.
+
+### P1 - Critical (Blocks Release)
 
 1. **Fix HTTP 500 Errors**
    - Replace in-memory storage with Redis/PostgreSQL
    - Implement atomic balance updates with transactions
-   - **ETA**: 3 days
-   - **Impact**: Eliminates 0.2% server errors
+   - **Impact**: Eliminates server errors under load
 
 2. **Improve Idempotency Key Validation (BUG-005)**
    - Include projectId in uniqueness check
    - Prevent data leak between game studios
    - See: `TC-F008: Idempotency Key Scope` in functional tests
-   - **ETA**: 1 day
    - **Impact**: Security improvement
 
-### P1 - High (Fix Before Scale)
+### P2 - High (Fix Before Release)
 
 3. **Optimize for 100+ Concurrent Users**
    - Database connection pooling
    - Consider caching for read-heavy operations (balance checks)
-   - **ETA**: 2 days
-   - **Impact**: P95 response time <500ms at 100 users
+   - **Impact**: P99 response time <1000ms at 100 users
 
 4. **Add Request Queuing**
    - Queue requests when system is overloaded
    - Return 503 with Retry-After instead of timing out
-   - **ETA**: 2 days
    - **Impact**: Better user experience under extreme load
 
-### P2 - Medium (Nice to Have)
+### P3 - Medium (Can Ship with Workaround)
 
 5. **Implement Circuit Breaker**
    - Auto-pause payouts if error rate >5%
    - Prevent cascade failures
-   - **ETA**: 1 day
    - **Impact**: Production stability
 
 6. **Add Load Shedding**
    - Prioritize paying game studios over free tier during load
    - Implement priority queuing
-   - **ETA**: 3 days
    - **Impact**: Better experience for paying projects
 
 ---
