@@ -5,11 +5,11 @@
 **Related Documents:**
 For detailed implementation details, including automation, load testing, CI/CD, and infrastructure, refer to the supporting documents below.
 
-- [Automation Strategy](../docs/automation-strategy.md)
-- [Functional Tests](../HandsOnExerciseABC/functional-tests.test.js)
-- [Load Tests](../HandsOnExerciseABC/load-test.js)
-- [CI/CD Pipeline](../HandsOnExerciseABC/.github/workflows/ci-cd.yml)
-- [Infrastructure (Terraform)](../HandsOnExerciseABC/terraform/)
+- [Automation Strategy](../automation-strategy.md)
+- [Functional Tests](../../HandsOnExerciseABC/functional-tests.test.js)
+- [Load Tests](../../HandsOnExerciseABC/load-test.js)
+- [CI/CD Pipeline](../../.github/workflows/ci-cd.yml)
+- [Infrastructure (Terraform)](../../HandsOnExerciseABC/terraform/)
 
 ---
 

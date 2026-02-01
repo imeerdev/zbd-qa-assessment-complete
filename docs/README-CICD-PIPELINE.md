@@ -401,17 +401,20 @@ For full test case details, see [README-API-TESTING.md](./README-API-TESTING.md)
 ## Files in This Directory
 
 ```
-HandsOnExerciseABC/
+zbd-qa-assessment-complete/
 ├── .github/
 │   └── workflows/
 │       └── ci-cd.yml              # MAIN FILE - Pipeline configuration
 │
-├── payment-api.js                 # Express.js API server
-├── functional-tests.test.js       # Jest test suite (16 tests)
-├── load-test.js                   # k6 load test
-├── load-test-artillery.yml        # Artillery load test
-├── package.json                   # Dependencies & scripts
-└── README-CICD-PIPELINE.md       # This file
+├── HandsOnExerciseABC/
+│   ├── payment-api.js             # Express.js API server
+│   ├── functional-tests.test.js   # Jest test suite (42 tests)
+│   ├── load-test.js               # k6 load test
+│   ├── load-test-artillery.yml    # Artillery load test
+│   └── package.json               # Dependencies & scripts
+│
+└── docs/
+    └── README-CICD-PIPELINE.md    # This file
 ```
 
 ## Running the Pipeline Locally

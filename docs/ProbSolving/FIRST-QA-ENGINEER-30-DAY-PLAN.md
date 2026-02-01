@@ -66,8 +66,6 @@ Fast-shipping teams can't wait for comprehensive test suites. The goal is **maxi
 
 **Never test with real money until you've exhausted every simulation option.**
 
-### Testing Pyramid
-
 ![Testing Pyramid](../images/testing-pyramid.png)
 
 ### Production Safeguards
@@ -101,6 +99,6 @@ When testing with real money is unavoidable:
 
 ## Related Documents
 
-- [Test Plan](../../TestPlanPRD/test-plan.md) - Overall testing strategy
+- [Test Plan](../TestPlanPRD/test-plan.md) - Overall testing strategy
 - [LIGHTNING-TIMEOUT-BUG-ANALYSIS.md](./LIGHTNING-TIMEOUT-BUG-ANALYSIS.md) - Example production bug analysis
 - [Automation Strategy](../automation-strategy.md) - Test automation approach

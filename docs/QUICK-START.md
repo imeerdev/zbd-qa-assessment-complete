@@ -5,7 +5,7 @@
 This complete submission contains:
 
 ### Part 1: Test Plan from PRD
-- [test-plan.md](../TestPlanPRD/test-plan.md) - Main test plan deliverable
+- [test-plan.md](./TestPlanPRD/test-plan.md) - Main test plan deliverable
 - [automation-strategy.md](./automation-strategy.md) - Automation roadmap
 
 ### Part 2: All Three Options (Combined)
@@ -45,7 +45,7 @@ cat TestPlanPRD/test-plan.md
 cat docs/LOAD-TEST-REPORT.md
 
 # Browse CI/CD workflow
-cat HandsOnExerciseABC/.github/workflows/ci-cd.yml
+cat .github/workflows/ci-cd.yml
 
 # Review Terraform documentation
 cat HandsOnExerciseABC/terraform/DOCUMENTATION.md
@@ -136,10 +136,11 @@ zbd-qa-assessment/
 │   ├── LOAD-TEST-REPORT.md       # Load test findings
 │   └── automation-strategy.md    # Automation roadmap
 │
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml             # Option B: CI/CD pipeline
+│
 └── HandsOnExerciseABC/           # ALL THREE OPTIONS
-    ├── .github/workflows/
-    │   └── ci-cd.yml             # Option B: CI/CD pipeline
-    │
     ├── terraform/                # Option C: Infrastructure
     │   ├── main.tf               # AWS resources
     │   ├── variables.tf
@@ -161,14 +162,14 @@ zbd-qa-assessment/
 ## Key Files to Review
 
 ### Must Read
-1. [TestPlanPRD/test-plan.md](../TestPlanPRD/test-plan.md) - Main test plan deliverable
+1. [TestPlanPRD/test-plan.md](./TestPlanPRD/test-plan.md) - Main test plan deliverable
 2. [docs/LOAD-TEST-REPORT.md](./LOAD-TEST-REPORT.md) - Test findings
 3. [HandsOnExerciseABC/terraform/DOCUMENTATION.md](../HandsOnExerciseABC/terraform/DOCUMENTATION.md) - IaC best practices
 
 ### Deep Dive
 1. [docs/automation-strategy.md](./automation-strategy.md) - Automation approach
 2. [HandsOnExerciseABC/functional-tests.test.js](../HandsOnExerciseABC/functional-tests.test.js) - Test examples
-3. [HandsOnExerciseABC/.github/workflows/ci-cd.yml](../HandsOnExerciseABC/.github/workflows/ci-cd.yml) - Pipeline config
+3. [.github/workflows/ci-cd.yml](../../.github/workflows/ci-cd.yml) - Pipeline config
 4. [HandsOnExerciseABC/terraform/main.tf](../HandsOnExerciseABC/terraform/main.tf) - Infrastructure code
 
 ---
