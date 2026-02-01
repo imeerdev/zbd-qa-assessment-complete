@@ -220,6 +220,6 @@ All three options use the **same API**. Combining them:
 
 ---
 
-**See [README-API-TESTING.md](./docs/README-API-TESTING.md) for API testing details**
-**See [README-CICD-PIPELINE.md](./docs/README-CICD-PIPELINE.md) for CI/CD pipeline details**
-**See [terraform/README.md](./HandsOnExerciseABC/terraform/README.md) for infrastructure quick start**
+- **[README-API-TESTING.md](./docs/README-API-TESTING.md)** - API testing details
+- **[README-CICD-PIPELINE.md](./docs/README-CICD-PIPELINE.md)** - CI/CD pipeline details
+- **[terraform/README.md](./HandsOnExerciseABC/terraform/README.md)** - Infrastructure quick start
