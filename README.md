@@ -117,6 +117,10 @@ terraform init && terraform apply
 zbd-qa-assessment-complete/
 ├── README.md                              # This file
 │
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml                      # Option B: CI/CD pipeline
+│
 ├── docs/
 │   ├── TestPlanPRD/
 │   │   └── test-plan.md                   # Part 1: Test plan deliverable
@@ -136,10 +140,6 @@ zbd-qa-assessment-complete/
 │       └── testing-pyramid.png
 │
 └── HandsOnExerciseABC/                    # Part 2: Hands-on implementation
-    ├── .github/
-    │   └── workflows/
-    │       └── ci-cd.yml                  # Option B: CI/CD pipeline
-    │
     ├── terraform/                         # Option C: Infrastructure
     │   ├── main.tf                        # AWS resources
     │   ├── variables.tf
