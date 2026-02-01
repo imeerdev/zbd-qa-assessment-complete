@@ -54,6 +54,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           # Cache npm dependencies for faster builds
           cache: 'npm'
+          cache-dependency-path: HandsOnExerciseABC/package-lock.json
       
       # STEP 3: Install dependencies
       - name: Install dependencies
@@ -108,7 +109,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      
+          cache-dependency-path: HandsOnExerciseABC/package-lock.json
+
       - name: Install dependencies
         working-directory: HandsOnExerciseABC
         run: npm ci
@@ -166,7 +168,8 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-      
+          cache-dependency-path: HandsOnExerciseABC/package-lock.json
+
       - name: Install dependencies
         working-directory: HandsOnExerciseABC
         run: npm ci
@@ -218,7 +221,8 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-      
+          cache-dependency-path: HandsOnExerciseABC/package-lock.json
+
       - name: Install dependencies
         working-directory: HandsOnExerciseABC
         run: npm ci
@@ -258,7 +262,8 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-      
+          cache-dependency-path: HandsOnExerciseABC/package-lock.json
+
       - name: Install dependencies
         working-directory: HandsOnExerciseABC
         run: npm ci
@@ -304,7 +309,8 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-      
+          cache-dependency-path: HandsOnExerciseABC/package-lock.json
+
       - name: Install dependencies
         working-directory: HandsOnExerciseABC
         run: npm ci
