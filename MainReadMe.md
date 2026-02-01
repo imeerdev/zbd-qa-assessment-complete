@@ -5,7 +5,7 @@
 **PRD:** Rewards SDK – Achievement-Based Bitcoin Payouts
 
 The main test plan deliverable is located at:
-- [Test Plan](./TestPlanPRD/test-plan.md) – Scope, scenarios, risks, and strategy
+- [Test Plan](./docs/TestPlanPRD/test-plan.md) – Scope, scenarios, risks, and strategy
 
 The `docs/` folder contains supporting documentation for the hands-on implementation.
 
@@ -110,34 +110,50 @@ export TF_VAR_db_password="$(openssl rand -base64 32)"
 terraform init && terraform apply
 ```
 
-## Files in This Directory
+## Repository Structure
 
 ```
-HandsOnExerciseABC/
-├── .github/
-│   └── workflows/
-│       └── ci-cd.yml              # CI/CD pipeline configuration
+zbd-qa-assessment-complete/
+├── MainReadMe.md                          # This file
 │
-├── terraform/                      # Infrastructure as Code
-│   ├── main.tf                    # AWS resources (EC2, RDS, VPC)
-│   ├── variables.tf               # Input variables
-│   ├── outputs.tf                 # Resource outputs
-│   ├── user_data.sh               # EC2 bootstrap (deploys THIS API)
-│   ├── smoke-test.sh              # Deployment validation
-│   ├── DOCUMENTATION.md           # 8-page IaC guide
-│   └── README.md                  # Terraform documentation
+├── docs/
+│   ├── TestPlanPRD/
+│   │   └── test-plan.md                   # Part 1: Test plan deliverable
+│   │
+│   ├── README-API-TESTING.md              # Option A documentation
+│   ├── README-CICD-PIPELINE.md            # Option B documentation
+│   ├── LOAD-TEST-REPORT.md                # Load test findings
+│   ├── CHAOS-TESTING-LIGHTNING-TIMEOUT.md # Chaos testing guide
+│   ├── QUICK-START.md                     # Quick start guide
+│   ├── automation-strategy.md             # Automation approach
+│   │
+│   ├── ProbSolving/                       # Part 3: Problem solving
+│   │   ├── LIGHTNING-TIMEOUT-BUG-ANALYSIS.md
+│   │   └── FIRST-QA-ENGINEER-30-DAY-PLAN.md
+│   │
+│   └── images/
+│       └── testing-pyramid.png
 │
-├── payment-api.js                 # Mock Payment API server
-├── functional-tests.test.js       # Jest test suite (42 tests)
-├── load-test.js                   # k6 load test
-├── load-test-artillery.yml        # Artillery load test
-├── artillery-functions.js         # Artillery helper functions
-├── package.json                   # Dependencies & scripts
-│
-├── LOAD-TEST-REPORT.md           # Load test findings
-├── README.md                      # This file
-├── README-API-TESTING.md         # Option A detailed documentation
-└── README-CICD-PIPELINE.md       # Option B detailed documentation
+└── HandsOnExerciseABC/                    # Part 2: Hands-on implementation
+    ├── .github/
+    │   └── workflows/
+    │       └── ci-cd.yml                  # Option B: CI/CD pipeline
+    │
+    ├── terraform/                         # Option C: Infrastructure
+    │   ├── main.tf                        # AWS resources
+    │   ├── variables.tf
+    │   ├── outputs.tf
+    │   ├── user_data.sh
+    │   ├── smoke-test.sh
+    │   ├── DOCUMENTATION.md
+    │   └── README.md
+    │
+    ├── payment-api.js                     # Option A: Mock API
+    ├── functional-tests.test.js           # 42 Jest tests
+    ├── load-test.js                       # k6 load test
+    ├── load-test-artillery.yml            # Artillery load test
+    ├── artillery-functions.js
+    └── package.json
 ```
 
 ## Key Results
