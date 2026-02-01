@@ -1,0 +1,31 @@
+{
+  "name": "payment-api-testing",
+  "version": "1.0.0",
+  "description": "Mock Payment API with comprehensive functional and load tests",
+  "main": "payment-api.js",
+  "scripts": {
+    "start": "node payment-api.js",
+    "test": "jest --verbose",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "load-test": "artillery run load-test-artillery.yml",
+    "load-test:k6": "k6 run load-test.js",
+    "load-test:report": "artillery run load-test-artillery.yml --output report.json && artillery report report.json"
+  },
+  "keywords": ["payment", "api", "testing", "load-test", "bitcoin"],
+  "author": "QA Engineer",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": ["/node_modules/"],
+    "testMatch": ["**/*.test.js"],
+    "verbose": true
+  }
+}

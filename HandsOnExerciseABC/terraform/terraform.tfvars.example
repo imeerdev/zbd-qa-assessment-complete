@@ -1,0 +1,81 @@
+# ============================================
+# TERRAFORM VARIABLES FILE (Example)
+# ============================================
+#
+# This file contains environment-specific values
+# Copy to terraform.tfvars and customize
+#
+# ⚠️  IMPORTANT: Never commit terraform.tfvars to git!
+# Add to .gitignore immediately
+# ============================================
+
+# ============================================
+# ENVIRONMENT
+# ============================================
+
+environment  = "test"
+project_name = "payment-api"
+aws_region   = "us-east-1"
+
+# ============================================
+# COMPUTE
+# ============================================
+
+ec2_instance_type = "t3.small"   # 2 vCPU, 2GB RAM
+
+# ============================================
+# DATABASE
+# ============================================
+
+db_instance_class = "db.t3.micro"  # 1 vCPU, 1GB RAM
+db_name           = "payment_api"
+db_username       = "dbadmin"
+
+# ⚠️  NEVER put actual password here!
+# Pass via environment variable or Secrets Manager:
+# export TF_VAR_db_password="your-secure-password"
+# db_password = "USE_ENVIRONMENT_VARIABLE"
+
+# ============================================
+# NETWORKING
+# ============================================
+
+# In production, restrict to office IP or use VPN
+allowed_ssh_cidr_blocks = ["0.0.0.0/0"]
+
+# ============================================
+# FEATURE FLAGS
+# ============================================
+
+enable_monitoring   = true
+enable_backups      = true   # Keep for 7 days
+enable_encryption   = true
+enable_autoscaling  = false  # Not needed in test
+
+# ============================================
+# APPLICATION DEPLOYMENT
+# ============================================
+
+# Git repository containing the Payment API code
+# After pushing this repo to GitHub, update this URL
+app_repo_url    = "https://github.com/your-username/zbd-qa-assessment.git"
+app_repo_branch = "main"
+
+# API port (default: 3000)
+api_port = 3000
+
+# ============================================
+# INSTANCE COUNT
+# ============================================
+
+instance_count = 1  # Single instance for test
+
+# ============================================
+# ADDITIONAL TAGS
+# ============================================
+
+additional_tags = {
+  Owner      = "qa-team@company.com"
+  CostCenter = "Engineering"
+  Purpose    = "API Testing"
+}

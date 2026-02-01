@@ -1,0 +1,156 @@
+# Artillery.io Load Test Configuration
+# Simpler alternative to k6, easier to install and run
+# Run with: artillery run load-test-artillery.yml
+#
+# ZBD-Style Payment API Features Tested:
+# - Gamertag-based payouts with 2% service fee
+# - Rate limiting (10 per gamertag per hour)
+# - Idempotency (duplicate prevention)
+# - Project balance management
+
+config:
+  target: "http://localhost:3000"
+  phases:
+    # Phase 1: Warm-up
+    - duration: 30
+      arrivalRate: 5
+      name: "Warm-up"
+
+    # Phase 2: Ramp-up to 50 users
+    - duration: 60
+      arrivalRate: 10
+      rampTo: 50
+      name: "Ramp-up to 50 users"
+
+    # Phase 3: Sustained load
+    - duration: 120
+      arrivalRate: 50
+      name: "Sustained 50 users"
+
+    # Phase 4: Spike test
+    - duration: 30
+      arrivalRate: 100
+      name: "Spike to 100 users"
+
+    # Phase 5: Cool-down
+    - duration: 30
+      arrivalRate: 10
+      name: "Cool-down"
+
+  # Performance thresholds
+  ensure:
+    p95: 500  # 95th percentile response time under 500ms
+    maxErrorRate: 0.3  # Max 30% error rate (accounting for rate limits)
+
+  # HTTP defaults
+  http:
+    timeout: 10
+
+  # Custom variables (ZBD project IDs)
+  variables:
+    projectId:
+      - "project_load_001"
+      - "project_load_002"
+      - "project_load_003"
+      - "project_load_004"
+      - "project_load_005"
+
+# Test setup
+before:
+  flow:
+    # Reset API state
+    - delete:
+        url: "/api/v1/test/reset"
+
+    # Fund ZBD project accounts
+    # Note: Each payout includes 2% service fee, so 500k sats allows ~490k in payouts
+    - loop:
+        count: 5
+        flow:
+          - post:
+              url: "/api/v1/projects/project_load_{{ $loopCount }}/fund"
+              json:
+                amount: 500000
+
+scenarios:
+  # Scenario 1: Normal payout flow (with 2% service fee)
+  - name: "Create Payouts"
+    weight: 80
+    flow:
+      # Generate random data
+      - function: "generatePayoutData"
+
+      # Create payout
+      # Response includes: amount, fee (2%), totalCost (amount + fee)
+      - post:
+          url: "/api/v1/payouts"
+          json:
+            gamertag: "{{ gamertag }}"
+            amount: "{{ amount }}"
+            projectId: "{{ projectId }}"
+            idempotencyKey: "{{ idempotencyKey }}"
+          capture:
+            - json: "$.data.id"
+              as: "payoutId"
+            - json: "$.data.fee"
+              as: "fee"
+            - json: "$.data.totalCost"
+              as: "totalCost"
+          expect:
+            - statusCode:
+                - 201  # Success (includes fee and totalCost in response)
+                - 200  # Duplicate request
+                - 429  # Rate limited (expected)
+                - 402  # Insufficient balance (includes fee in error)
+
+      # If successful, verify payout includes fee
+      - get:
+          url: "/api/v1/payouts/{{ payoutId }}"
+          ifTrue: "payoutId"
+          expect:
+            - statusCode: 200
+            - contentType: json
+
+      # Think time
+      - think: 1
+
+  # Scenario 2: Balance checking
+  - name: "Check Balance"
+    weight: 10
+    flow:
+      - get:
+          url: "/api/v1/projects/{{ projectId }}/balance"
+          expect:
+            - statusCode: 200
+            - contentType: json
+
+  # Scenario 3: Idempotency test (duplicate requests)
+  - name: "Duplicate Request Test"
+    weight: 10
+    flow:
+      - function: "generatePayoutData"
+
+      # First request (1000 sats + 20 fee = 1020 total)
+      - post:
+          url: "/api/v1/payouts"
+          json:
+            gamertag: "{{ gamertag }}"
+            amount: 1000
+            projectId: "project_load_001"
+            idempotencyKey: "duplicate_test_{{ gamertag }}"
+
+      # Immediate duplicate (should return same payout, no additional fee charged)
+      - post:
+          url: "/api/v1/payouts"
+          json:
+            gamertag: "{{ gamertag }}"
+            amount: 1000
+            projectId: "project_load_001"
+            idempotencyKey: "duplicate_test_{{ gamertag }}"
+          expect:
+            - statusCode:
+                - 200  # Should be duplicate request
+                - 201  # Or still processing first
+
+# Custom JavaScript functions
+processor: "./artillery-functions.js"
